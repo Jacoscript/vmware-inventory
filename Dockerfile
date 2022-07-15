@@ -6,4 +6,7 @@ RUN apt update; \
     apt install ./ms.deb; \
     apt update; \
     apt install powershell -y
+RUN pwsh -c "Install-Module -Name VMware.PowerCLI -Force -WarningAction SilentlyContinue"; \
+    pwsh -c "Install-Module -Name PSWriteOffice -Force -WarningAction SilentlyContinue"; \
+    pwsh -c "Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:\$false -WarningAction SilentlyContinue"
 CMD [ "pwsh" ]
